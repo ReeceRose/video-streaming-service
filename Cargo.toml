@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "core",
+    "services/notification",
+    "services/transcoding",
+    "services/video",
+]
+
+[workspace.dependencies]
+tokio = { version = "1.40.0", features = ["full"] }
+axum = { version = "0.7.5" }
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter", "json"] }
+serde_json = { version = "1.0.128" }
+tower-http = { version = "0.5.2", features = ["trace", "compression-gzip"] }
+async-nats = { version = "0.36.0" }
+futures = { version = "0.3.30", default-features = false, features = ["std"] }
+
+[workspace.package]
+version = "0.0.1"
+authors = ["Reece Rose <reecerose18@gmail.com>"]
+description = ""
