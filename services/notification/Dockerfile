@@ -19,4 +19,4 @@ RUN cargo install cargo-watch
 
 EXPOSE 8082
 
-CMD ["cargo", "watch", "-x", "run -p notification"]
+CMD ["cargo", "watch", "-x", "run -p video_on_demand_notification_service"]
