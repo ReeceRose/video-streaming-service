@@ -1,14 +1,20 @@
 [package]
-name = "video"
+name = "video_on_demand_video_service"
 edition = "2021"
 version.workspace = true
 authors.workspace = true
 description.workspace = true
 
 [dependencies]
+video_on_demand_core = { path = "../../core" }
+
 tokio = { workspace = true }
+serde = { workspace = true }
 axum = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-serde_json = { workspace = true }
 tower-http = { workspace = true }
+uuid = { workspace = true }
+
+# [dev-dependencies]
+# axum-macros = { version = "0.4.1" }

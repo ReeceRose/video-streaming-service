@@ -1,8 +1,10 @@
 [package]
-name = "core"
+name = "video_on_demand_core"
 edition = "2021"
 version.workspace = true
 authors.workspace = true
 description.workspace = true
 
 [dependencies]
+aws-config = { workspace = true }
+aws-sdk-s3 = { workspace = true }

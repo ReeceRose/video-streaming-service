@@ -19,4 +19,4 @@ RUN cargo install cargo-watch
 
 EXPOSE 8081
 
-CMD ["cargo", "watch", "-x", "run -p transcoding"]
+CMD ["cargo", "watch", "-x", "run -p video_on_demand_transcoding_service"]

@@ -1,8 +1,12 @@
-use axum::{response::Json, routing::get, Router};
-use serde_json::{json, Value};
+mod models;
+mod v1;
+
+use crate::v1::create_v1_routes;
+use axum::Router;
 use tower_http::{compression::CompressionLayer, trace::TraceLayer};
 use tracing::info;
 use tracing_subscriber::prelude::*;
+use video_on_demand_core::s3::S3Client;
 
 #[tokio::main]
 async fn main() {
@@ -14,16 +18,15 @@ async fn main() {
         .with(tracing_subscriber::fmt::layer().json())
         .init();
 
+    let client = S3Client::new().await;
+
     let app = Router::new()
-        .route("/", get(handler))
+        .nest("/v1", create_v1_routes())
         .layer(TraceLayer::new_for_http())
-        .layer(CompressionLayer::new());
+        .layer(CompressionLayer::new())
+        .with_state(client);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:8080").await.unwrap();
     info!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
-}
-
-async fn handler() -> Json<Value> {
-    Json(json!({ "msg": "Hello, world!" }))
 }

@@ -10,13 +10,17 @@ members = [
 
 [workspace.dependencies]
 tokio = { version = "1.40.0", features = ["full"] }
-axum = { version = "0.7.5" }
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = { version = "1.0.128" }
+axum = { version = "0.7.6" }
 tracing = { version = "0.1.40" }
 tracing-subscriber = { version = "0.3.18", features = ["env-filter", "json"] }
-serde_json = { version = "1.0.128" }
-tower-http = { version = "0.5.2", features = ["trace", "compression-gzip"] }
+tower-http = { version = "0.6.0", features = ["trace", "compression-gzip"] }
 async-nats = { version = "0.36.0" }
 futures = { version = "0.3.30", default-features = false, features = ["std"] }
+aws-config = { version = "1.5.6", features = ["behavior-version-latest"] }
+aws-sdk-s3 = { version = "1.51.0" }
+uuid = { version = "1.10.0", features = ["v4"] }
 
 [workspace.package]
 version = "0.0.1"
