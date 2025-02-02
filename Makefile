@@ -2,7 +2,7 @@
 DOCKER_COMPOSE_PROD_FILE := compose-dev.yml
 DOCKER_COMPOSE_DEV_FILE := compose-dev.yml
 DOCKER_COMPOSE_PROD := docker compose -f $(DOCKER_COMPOSE_PROD_FILE)
-DOCKER_COMPOSE__DEV := docker compose -f $(DOCKER_COMPOSE_DEV_FILE)
+DOCKER_COMPOSE_DEV := docker compose -f $(DOCKER_COMPOSE_DEV_FILE)
 
 
 # Targets

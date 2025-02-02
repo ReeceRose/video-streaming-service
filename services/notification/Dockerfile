@@ -1,4 +1,4 @@
-FROM rust:1.81
+FROM rust:1.83
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,7 +14,7 @@ COPY Cargo.toml ./
 COPY services/notification/Cargo.toml services/notification/
 COPY . .
 
-RUN cargo build -p notification
+RUN cargo build -p video_on_demand_notification_service
 RUN cargo install cargo-watch
 
 EXPOSE 8082

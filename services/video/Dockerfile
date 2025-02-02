@@ -1,4 +1,4 @@
-FROM rust:1.81
+FROM rust:1.83
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,9 +14,9 @@ COPY Cargo.toml ./
 COPY services/video/Cargo.toml services/video/
 COPY . .
 
-RUN cargo build -p video
+RUN cargo build -p video_on_demand_video_service
 RUN cargo install cargo-watch
 
 EXPOSE 8080
 
-CMD ["cargo", "watch", "-x", "run -p video_on_demand_transcoding_service"]
+CMD ["cargo", "watch", "-x", "run -p video_on_demand_video_service"]

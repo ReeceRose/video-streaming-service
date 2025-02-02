@@ -1,4 +1,4 @@
-FROM rust:1.81
+FROM rust:1.83
 
 RUN apt-get update && \
     apt-get install -y \
@@ -14,7 +14,7 @@ COPY Cargo.toml ./
 COPY services/transcoding/Cargo.toml services/transcoding/
 COPY . .
 
-RUN cargo build -p transcoding
+RUN cargo build -p video_on_demand_transcoding_service
 RUN cargo install cargo-watch
 
 EXPOSE 8081
